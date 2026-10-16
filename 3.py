@@ -1,6 +1,5 @@
 #Проверка числа
 while True:
-    print()
     try:
         Number = int(input("Введите число: "))
     except ValueError:
@@ -36,10 +35,11 @@ while True:
 
         #Проверка на простое число
         IsSimple = Number > 1
-        for i in range(2, int(Number ** 0.5) + 1):
-            if Number % i == 0:
-                IsSimple = False
-                break
+        if IsSimple:
+            for i in range(2, int(Number ** 0.5) + 1):
+                if Number % i == 0:
+                    IsSimple = False
+                    break
         if IsSimple:
             print("Простое: да")
         else:
@@ -50,9 +50,12 @@ while True:
         print(f"Количество цифр: {DigitsCount}")
 
         #Проверка на полный квадрат
-        Root = int(Number ** 0.5)
-        if Number >= 0 and (Root * Root == Number):
-            print("Полный квадрат: да")
+        if Number >= 0:
+            Root = int(Number ** 0.5)
+            if Root * Root == Number:
+                print("Полный квадрат: да")
+            else:
+                print("Полный квадрат: нет")
         else:
             print("Полный квадрат: нет")
 
